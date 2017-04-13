@@ -27,4 +27,4 @@ CMD ["/bin/bash"]
 
 # To run the App
 # 1. Use the following run command
-# docker run -p 5001:5001 -p <hostport>:<goserverport> -v $GOPATH/src/<path>/<to>/<app>:/go/src/<path>/<to></app> watchguard/golang-dev-container realize --name="AppName" --server
+# docker run -p 5001:5001 -p <hostport>:<goserverport> -v $GOPATH/src/<path>/<to>/<app>:/go/src/<path>/<to></app> allenk1/golang-dev-container realize run ---path="/go/src/<path>/<to></app>" --server
