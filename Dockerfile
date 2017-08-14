@@ -6,18 +6,16 @@ ENV VERSION "1.8.1"
 ENV OS "linux"
 ENV ARCH "amd64"
 
-# Set new Path
-ENV "GOPATH=/go"
-ENV "PATH=$PATH:/usr/local/go/bin:$GOPATH/bin"
 
 # Base Install
-RUN mkdir /go
+RUN mkdir /go && export GOPATH=/go
 RUN yum install -y wget git
 RUN wget https://storage.googleapis.com/golang/go$VERSION.$OS-$ARCH.tar.gz -P /tmp && \
-    tar -C /usr/local -xzf /tmp/go$VERSION.$OS-$ARCH.tar.gz
+    tar -C /usr/local -xzf /tmp/go$VERSION.$OS-$ARCH.tar.gz && \
+    export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
 # Configure GO
-RUN go get github.com/tockins/realize
+RUN /usr/local/go/bin/go get github.com/tockins/realize
 
 # Clenaup
 RUN rm -rf /tmp/*
